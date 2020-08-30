@@ -2,4 +2,4 @@
 Python Pentesting tools
 
 
-DO NOT FORGET THE SHEBANG IF YOU ARE USING LINUX!  !# /usr/bin/python
+DO NOT FORGET THE SHEBANG IF YOU ARE USING LINUX!  !#/usr/bin/python
