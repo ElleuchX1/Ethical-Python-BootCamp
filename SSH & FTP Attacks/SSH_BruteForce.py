@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 from sty import fg
+import pexpect
 def connect2SSH(host,user,pw):
     ssh_string='Continue? : Yes/No'
     con_string='ssh '+user+'@'+'host'
