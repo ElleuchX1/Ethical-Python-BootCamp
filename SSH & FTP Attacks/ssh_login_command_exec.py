@@ -1,4 +1,5 @@
 #!/usr/bin/env python  
+from sty import fg
 import pexpect # https://pexpect.readthedocs.io/en/stable/index.html
 
 # This script works only on linux. 
@@ -17,10 +18,10 @@ def connect2SSH(host,user,pw):
             child.expect(['#','/$']) # Add here whatever you need  ( '<' '<<'  )
             return child           
         else:
-            print('|+| Opps, Something went wrong.. ') 
+            print(fg.red+'|-| Opps, Something went wrong.. '+fg.rs) 
             exit(0)
     else:
-        print('|+| Opps, Something went wrong.. ') 
+        print(fg.red+'|-| Opps, Something went wrong.. '+fg.rs) 
         exit(0)   
 def commands(child,ComString):
     child.sendline(ComString)
