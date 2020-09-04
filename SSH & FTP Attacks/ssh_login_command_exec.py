@@ -7,8 +7,7 @@ import pexpect # https://pexpect.readthedocs.io/en/stable/index.html
 def connect2SSH(host,user,pw):
     ssh_string='Continue? : Yes/No'
     con_string='ssh '+user+'@'+'host'
-    child =pexpect.spawn(con_string)  
-    
+    child =pexpect.spawn(con_string)   
     msgRec=child.expect([pexpect.TIMEOUT,ssh_string,'Password: '])
     if msgRec:
         child.sendline('yes')
@@ -16,29 +15,25 @@ def connect2SSH(host,user,pw):
         if msgRec:
             child.sendline(pw)
             child.expect(['#','/$']) # Add here whatever you need  ( '<' '<<'  )
-            return child
-            
+            return child           
         else:
             print('|+| Opps, Something went wrong.. ') 
             exit(0)
-
     else:
         print('|+| Opps, Something went wrong.. ') 
-        exit(0)
-
-    
+        exit(0)   
 def commands(child,ComString):
     child.sendline(ComString)
     child.expect(['#','/$']) # Add here whatever you need  ( '<' '<<'  )
-    print(child.before)
-
-
-
-    
+    print(child.before)   
 def main():
-    host=input('Enter the Target Host: ')
-    user=input('Enter the Target User: ')
-    pw=input('Enter the Target Password: ')
+    print('|-------------------------------------------|')
+    host,user,pw='','',''
+    while host == '' or user == '' or pw ==''
+        host=input('Enter the Target Host: ')
+        user=input('Enter the Target User: ')
+        pw=input('Enter the Target Password: ')
+    print('|-------------------------------------------|')
     shell=connect2SSH(host,user,pw)
     commands(shell,'<Command1 ; Command2; ... >')
 if __name__ == "__main__":
